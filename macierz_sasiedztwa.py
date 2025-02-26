@@ -1,13 +1,14 @@
-def MS(wierz,kraw):
-    tab = [[0] * wierz for i in range(wierz)]
+def MS(wierz, kraw):
+    macierz = [[0] * wierz for i in range(wierz)]
     for i in range(kraw):
-        wierz1, wierz2 = map(int,input().split())
-        tab[wierz1][wierz2] = 1
-        tab[wierz2][wierz1] = 1
+        wierz_1, wierz_2 = map(int, input().split())
+        macierz[wierz_1][wierz_2] = 1
+        macierz[wierz_2][wierz_1] = 1
     for i in range(wierz):
         for j in range(wierz):
-            print(tab[i][j],end=" ")
-        print(end="\n")
+            print(macierz[i][j], end = " ")
+        print(end = "\n")
+        
 
-MS(8,11)
-    
+l_wierz, l_kraw = map(int, input().split())
+MS(l_wierz, l_kraw)
