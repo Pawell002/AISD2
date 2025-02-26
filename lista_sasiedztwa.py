@@ -1,16 +1,14 @@
-def MS(wierz, kraw):
-    macierz = [[0] * wierz for i in range(wierz)]
+def LS(wierz, kraw):
+    lista_sas = [[] for i in range(wierz)]
     for i in range(kraw):
         wierz_1, wierz_2 = map(int, input().split())
-        macierz[wierz_1][wierz_2] = 1
-        macierz[wierz_2][wierz_1] = 1
+        lista_sas[wierz_1].append(wierz_2)
+        lista_sas[wierz_2].append(wierz_1)
     for i in range(wierz):
-        for j in range(wierz):
-            print(macierz[i][j], end = " ")
-        print(end = "\n")
+        print(lista_sas[i])
         
 
 l_wierz, l_kraw = map(int, input().split())
-MS(l_wierz, l_kraw)
+LS(l_wierz, l_kraw)
 
     
