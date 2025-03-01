@@ -1,13 +1,27 @@
-def MS(wierz,kraw):
-    tab = [[0] * wierz for i in range(wierz)]
+def DT(wierz,kraw):
+    tab_dane = [[0] * 2 for i in range(kraw)]
+    tab_roz = [0]*(wierz+1)
+    tab_kraw = [0]*(kraw*2)
+    tab_temp = [] 
     for i in range(kraw):
         wierz1, wierz2 = map(int,input().split())
-        tab[wierz1][wierz2] = 1
-        tab[wierz2][wierz1] = 1
+        tab_dane[i][0] = wierz1
+        tab_dane[i][1] = wierz2
+        tab_roz[wierz1] += 1
+        tab_roz[wierz2] += 1
     for i in range(wierz):
-        for j in range(wierz):
-            print(tab[i][j],end=" ")
-        print(end="\n")
+        tab_roz[i+1] += tab_roz[i]
+    tab_temp = tab_roz
+    for i in range(kraw):
+        tab_kraw[tab_temp[tab_dane[i][0]-1]]= tab_dane[i][1]
+        tab_temp[tab_dane[i][0]-1] += 1
+        tab_kraw[tab_temp[tab_dane[i][1]-1]]= tab_dane[i][0]
+        tab_temp[tab_dane[i][1]-1] += 1
+    print(tab_roz)
+    print(tab_kraw)
 
-MS(8,11)
+l_wierz, l_kraw = map(int, input().split())
+DT(l_wierz, l_kraw)
+
+
     
