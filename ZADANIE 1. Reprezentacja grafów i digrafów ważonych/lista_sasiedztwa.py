@@ -5,7 +5,7 @@ def LS(wierz, kraw):
         lista_sas[wierz_1].append(wierz_2)
         lista_sas[wierz_2].append(wierz_1)
     for i in range(wierz):
-        print(lista_sas[i])
+        print(i,":",lista_sas[i])
         
 
 l_wierz, l_kraw = map(int, input().split())
