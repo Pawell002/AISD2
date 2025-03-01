@@ -7,21 +7,22 @@ def DT(wierz,kraw):
         wierz1, wierz2 = map(int,input().split())
         tab_dane[i][0] = wierz1
         tab_dane[i][1] = wierz2
-        tab_roz[wierz1] += 1
-        tab_roz[wierz2] += 1
+        tab_roz[wierz1+1] += 1
+        tab_roz[wierz2+1] += 1 
     for i in range(wierz):
         tab_roz[i+1] += tab_roz[i]
-    tab_temp = tab_roz
+    tab_temp = tab_roz.copy()
     for i in range(kraw):
-        tab_kraw[tab_temp[tab_dane[i][0]-1]]= tab_dane[i][1]
-        tab_temp[tab_dane[i][0]-1] += 1
-        tab_kraw[tab_temp[tab_dane[i][1]-1]]= tab_dane[i][0]
-        tab_temp[tab_dane[i][1]-1] += 1
+        tab_kraw[tab_temp[tab_dane[i][0]]]= tab_dane[i][1]
+        tab_temp[tab_dane[i][0]] += 1
+        tab_kraw[tab_temp[tab_dane[i][1]]]= tab_dane[i][0]
+        tab_temp[tab_dane[i][1]] += 1
     print(tab_roz)
     print(tab_kraw)
 
 l_wierz, l_kraw = map(int, input().split())
 DT(l_wierz, l_kraw)
+
 
 
     
