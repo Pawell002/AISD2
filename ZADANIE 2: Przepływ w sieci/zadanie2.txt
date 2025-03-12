@@ -1,0 +1,5 @@
+1. Wybieramy dowolną ścieżkę
+2. Wybieramy minimalną wartość przepływu dla wierzchołków i krawędzi na danej ścieżce
+3. Tworzymy sieć residualną
+4. Wybieramy minimum z utworzonej sieci
+5. Powtarzamy do momentu gdy nie można utworzyć nowej sieci residualnej
