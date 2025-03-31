@@ -1,0 +1,22 @@
+Dane:
+Spis pól jęczmienia: położenie, średnia ilość
+1 tona jęczmienia = 1 tona piwa
+podane przez Bilba przepustowości drogi
+
+Niewiadome:
+maks ilości trunku dostarczanego do karczm
+
+Cel:
+przechowywanie informacji o polach, browarach, karczmach i drogach (prawdopodobnie wierzchołki + ścieżki grafu)
+sposób znalezienia maks ilości piwa dostarczanego do karczm
+
+II.
+Cel:
+Ustalić min koszt (koszty ścieżek), bez strat piwa
+
+III.
+Dane:
+Ilość jęczmienia produkowanego na danej ćwiartce
+
+Cel:
+zmodyfikować całe rozwiązanie tak aby działało z nowymi danymi
