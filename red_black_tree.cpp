@@ -14,9 +14,8 @@ struct wierzcholek{
 
 wierzcholek *korzen = nullptr;
 
-void lewa_rotacja(wierzcholek* x){
-    cout << "Rotuje..." << endl;
-    wierzcholek* y = x->prawy;
+void lewa_rotacja(wierzcholek *x){
+    wierzcholek *y = x->prawy;
     x->prawy = y->lewy;
     if(y->lewy != nullptr){
         y->lewy->rodzic = x;
@@ -35,49 +34,93 @@ void lewa_rotacja(wierzcholek* x){
     x->rodzic = y;
 }
 
-void dodaj(int w){
-    wierzcholek *nowy = new wierzcholek{w, RED, nullptr, nullptr, nullptr};
-    if(korzen == nullptr){
-        nowy->color = BLACK;
-        korzen = nowy;
-        return;
+void prawa_rotacja(wierzcholek *x){
+    wierzcholek *y = x->lewy;
+    x->lewy = y->prawy;
+    if(y->prawy != nullptr){
+        y->prawy->rodzic = x;
+    }
+    y->rodzic = x->rodzic;
+    if(x->rodzic == nullptr){
+        korzen = y;
+    }
+    else if(x == x->rodzic->prawy){
+        x->rodzic->prawy = y;
     }
     else{
-        wierzcholek *obecny = korzen;
-        while(true){
-            if(w < obecny->wartosc){
-                if(obecny->lewy != nullptr){
-                    obecny = obecny->lewy;
-                    nowy->rodzic = obecny;
+        x->rodzic->lewy = y;
+    }
+    y->prawy = x;
+    x->rodzic = y;
+}
+
+void napraw(wierzcholek *z){
+    while(z->rodzic != nullptr && z->rodzic->color == RED){
+        if(z->rodzic == z->rodzic->rodzic->lewy){
+            wierzcholek *wujek = z->rodzic->rodzic->prawy;
+            if(wujek != nullptr && wujek->color == RED){
+                z->rodzic->color = BLACK;
+                wujek->color = BLACK;
+                z->rodzic->rodzic->color = RED;
+                z = z->rodzic->rodzic;
+            } else{
+                if(z == z->rodzic->prawy){
+                    z = z->rodzic;
+                    lewa_rotacja(z);
                 }
-                else{
-                    obecny->lewy = nowy;
-                    return;
-                }
+                z->rodzic->color = BLACK;
+                z->rodzic->rodzic->color = RED;
+                prawa_rotacja(z->rodzic->rodzic);
             }
-            else{
-                if(obecny->prawy != nullptr){
-                    obecny = obecny->prawy;
-                    nowy->rodzic = obecny;
+        } else{
+            wierzcholek *wujek = z->rodzic->rodzic->lewy;
+            if(wujek != nullptr && wujek->color == RED){
+                z->rodzic->color = BLACK;
+                wujek->color = BLACK;
+                z->rodzic->rodzic->color = RED;
+                z = z->rodzic->rodzic;
+            } else{
+                if(z == z->rodzic->lewy){
+                    z = z->rodzic;
+                    prawa_rotacja(z);
                 }
-                else{
-                    obecny->prawy = nowy;
-                    cout << "Debug: przed rotacja" << endl;
-                    cout << obecny->color << endl;
-                    cout << obecny->lewy << endl;
-                    if(obecny->rodzic->color == RED && obecny->rodzic->lewy == nullptr){
-                        lewa_rotacja(obecny->rodzic);
-                    }
-                    return;
-                }
+                z->rodzic->color = BLACK;
+                z->rodzic->rodzic->color = RED;
+                lewa_rotacja(z->rodzic->rodzic);
             }
         }
     }
+    korzen->color = BLACK;
+}
+
+
+void dodaj(int wartosc) {
+    wierzcholek *z = new wierzcholek{wartosc, RED, nullptr, nullptr, nullptr};
+    wierzcholek *y = nullptr;
+    wierzcholek *x = korzen;
+
+    while (x != nullptr) {
+        y = x;
+        if (z->wartosc < x->wartosc)
+            x = x->lewy;
+        else
+            x = x->prawy;
+    }
+
+    z->rodzic = y;
+    if (y == nullptr)
+        korzen = z;
+    else if (z->wartosc < y->wartosc)
+        y->lewy = z;
+    else
+        y->prawy = z;
+
+    napraw(z);
 }
 
 void preorder(wierzcholek *wiersz){
     if(wiersz != nullptr){
-        cout << wiersz -> wartosc << " ";
+        cout << wiersz->wartosc << " (" << (wiersz->color == RED ? "R" : "B") << ") ";
         preorder(wiersz->lewy);
         preorder(wiersz->prawy);
     }
