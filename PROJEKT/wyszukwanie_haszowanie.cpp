@@ -12,7 +12,7 @@ int main(){
     string wzorzec;
     string wyrazenie;
 
-    cout << "Wzorzec zlo¿ony z malych liter: ";
+    cout << "Wzorzec zloÅ¼ony z malych liter: ";
     cin >> wzorzec;
     while(temp < wzorzec.size()){
         znak = wzorzec[temp];
