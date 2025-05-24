@@ -5,7 +5,6 @@
 #include <vector>
 #include <string>
 
-// Definicja Punktu (możesz przenieść ją do osobnego pliku, albo do wypukla_otoczka.h)
 struct Punkt {
     double x;
     double y;
