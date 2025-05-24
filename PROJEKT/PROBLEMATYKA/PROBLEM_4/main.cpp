@@ -30,7 +30,6 @@ int main() {
             p.punkty.push_back(Punkt(x,y));
         }
 
-        // Oblicz wypukłą otoczkę (na wszelki wypadek)
         p.punkty = wypuklaOtoczka(p.punkty);
 
         pola.push_back(p);
