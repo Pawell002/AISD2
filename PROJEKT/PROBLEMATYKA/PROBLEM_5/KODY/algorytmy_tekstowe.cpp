@@ -18,6 +18,37 @@ void wyszukajNaiwnie(const string& tekst, const string& wzorzec, vector<pair<int
     }
 }
 
+void boyerMoore(const string& tekst, const string& wzorzec, vector<pair<int,int>>& wyniki, int nrLinii) {
+    int m = wzorzec.size();
+    int n = tekst.size();
+
+    if (m == 0 || m > n) return;
+
+    vector<int> ostatni(128, -1);
+
+    // Budowanie tablicy ostatnich wystąpień
+    for (int i = 0; i < m; i++) {
+        ostatni[(unsigned char)wzorzec[i]] = i;
+    }
+
+    int przesuniecie = 0;
+
+    while (przesuniecie <= n - m) {
+        int j = m - 1;
+
+        while (j >= 0 && wzorzec[j] == tekst[przesuniecie + j]) {
+            j--;
+        }
+
+        if (j < 0) {
+            wyniki.emplace_back(nrLinii, przesuniecie);
+            przesuniecie += 1;  // Można też skoczyć o więcej, ale to wystarczy
+        } else {
+            przesuniecie += max(1, j - ostatni[(unsigned char)tekst[przesuniecie + j]]);
+        }
+    }
+}
+
 // ----- Rabin-Karp -----
 int znajdzRabinKarp(const string& wzorzec, const string& tekst, int p, int podstawa, vector<pair<int,int>>& wyniki, int nrLinii) {
     if (wzorzec.empty() || wzorzec.size() > tekst.size()){
