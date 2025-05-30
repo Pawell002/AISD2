@@ -30,4 +30,7 @@ void wstaw(TrieWezel* korzen, const string& wzorzec, int id);
 vector<tuple<int, int, int>> znajdzWTekscie(TrieWezel* korzen, const string& wyrazenie);
 void usun(TrieWezel* wezel);
 
+// ----- Boyer-Moore -----
+void boyerMoore(const string& tekst, const string& wzorzec, vector<pair<int,int>>& wyniki, int nrLinii);
+
 #endif
