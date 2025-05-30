@@ -6,6 +6,8 @@
 #include "graf_budowa.h"
 #include "min_cost_max_flow.h"
 #include "algorytmy_tekstowe.h"
+#include "wypukla_otoczka.h" 
+
 using namespace std;
 int main()
 {
@@ -74,6 +76,30 @@ int main()
 
     plikWyj.close();
 
+    double laczna_ilosc_jeczmienia = 0.0;
+
+    for (const auto& pole : pola) {
+    // Tworzymy sztuczne punkty wokół (x, y) pola (np. kwadrat 1x1)
+    std::vector<Punkt> punktyOtoczki = {
+        Punkt(pole.x - 0.5, pole.y - 0.5),
+        Punkt(pole.x + 0.5, pole.y - 0.5),
+        Punkt(pole.x + 0.5, pole.y + 0.5),
+        Punkt(pole.x - 0.5, pole.y + 0.5)
+    };
+
+    auto otoczka = wypuklaOtoczka(punktyOtoczki);
+    double powierzchnia = poleWielokata(otoczka);
+    double ilosc = powierzchnia * pole.ilosc_jeczmienia;
+
+    cout << "Pole id=" << pole.id << " o srodku (" << pole.x << ", " << pole.y 
+         << ") ma powierzchnie ~" << powierzchnia 
+         << " i produkuje " << ilosc << " jednostek jeczmienia." << endl;
+
+    laczna_ilosc_jeczmienia += ilosc;
+}
+
+cout << "\nLaczna ilosc jeczmienia: " << laczna_ilosc_jeczmienia << endl;
+    
     ifstream plikWej("wynik.txt");
     vector<string> linie;
     string linia;
