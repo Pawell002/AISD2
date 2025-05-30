@@ -14,7 +14,7 @@ struct Pole {
     int id;
     double x;
     double y;
-    int ilosc_jeczmienia;
+    double ilosc_jeczmienia;
 };
 
 struct Browar {
