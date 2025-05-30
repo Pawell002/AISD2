@@ -7,6 +7,7 @@
 #include "min_cost_max_flow.h"
 #include "algorytmy_tekstowe.h"
 #include "wypukla_otoczka.h" 
+#include "Huffman.h"
 
 using namespace std;
 int main()
