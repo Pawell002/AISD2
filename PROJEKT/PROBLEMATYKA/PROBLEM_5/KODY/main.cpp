@@ -161,7 +161,17 @@ int main()
                 usun(korzen);
                 break;
             }
-            default:
+
+        case 5:
+            cout << "Podaj wzorzec: " << endl;
+            getline(cin, wzorzec);
+            for (int i = 0; i < (int)linie.size(); i++) {
+                boyerMoore(linie[i], wzorzec, wyniki, i);
+            }
+            cout << endl;
+            break;
+            
+        default:
                 cout << "Nie ma takiego algorytmu" << endl;
                 break;
         }
