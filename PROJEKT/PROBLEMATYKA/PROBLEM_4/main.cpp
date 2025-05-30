@@ -25,7 +25,7 @@ int main() {
         
         p.punkty.clear();
         for (int j = 0; j < liczba_punktow; j++) {
-            int x, y;
+            double x, y;
             plik >> x >> y;
             p.punkty.push_back(Punkt(x,y));
         }
