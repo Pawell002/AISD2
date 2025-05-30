@@ -1,33 +1,36 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
-
-int main(){
+int main() {
     int temp = 0, znak, m, n;
     string wyrazenie;
     string wzorzec;
-    vector<int> ostatni(128, 0);
+    vector<int> ostatni(128, -1);  // inicjalizacja na -1, aby wskazywać brak znaku
 
     cout << "Podaj wzorzec: ";
-
     cin >> wzorzec;
-    while(temp < wzorzec.size()){
-        znak = wzorzec[temp];
-        if(znak < 0 || znak > 127 ){
+
+    // Sprawdzenie czy wzorzec zawiera poprawne znaki ASCII
+    while (temp < (int)wzorzec.size()) {
+        znak = (unsigned char)wzorzec[temp];
+        if (znak < 0 || znak > 127) {
             cout << "Nieprawidlowy wzorzec! Wpisz poprawny wzorzec: ";
             cin >> wzorzec;
             temp = 0;
-        } else{
+        }
+        else {
             temp++;
         }
     }
 
-    m = wzorzec.size();
+    m = (int)wzorzec.size();
 
-    for(int i = 0; i < wzorzec.size(); i++){
-        ostatni[wzorzec[i]] = i;
+    // Wypełnienie tablicy ostatnich wystąpień
+    for (int i = 0; i < m; i++) {
+        ostatni[(unsigned char)wzorzec[i]] = i;
     }
 
     cout << "Podaj wyrazenie zgodne ze slownikiem: ";
@@ -35,38 +38,46 @@ int main(){
 
     temp = 0;
 
-    while(temp < wyrazenie.size()){
-        znak = wyrazenie[temp];
-        if(znak > 127 || znak < 0){
+    // Sprawdzenie poprawności wyrazenia
+    while (temp < (int)wyrazenie.size()) {
+        znak = (unsigned char)wyrazenie[temp];
+        if (znak < 0 || znak > 127) {
             cout << "Nieprawidlowe wyrazenie! Wprowadz poprawne wyrazenie: ";
             cin >> wyrazenie;
             temp = 0;
-        } else{
+        }
+        else {
             temp++;
         }
     }
 
-    n = wyrazenie.size();
+    n = (int)wyrazenie.size();
 
     int pp = 0;
     temp = 0;
     bool znaleziono = false;
 
-    while(temp < n - m + 1){
+    while (temp <= n - m) {
         int j = m - 1;
-        while(j >= 0 && wzorzec[j] == wyrazenie[temp+j]){
-            j -= 1;
+        // Porównujemy wzorzec z tekstem od końca wzorca
+        while (j >= 0 && wzorzec[j] == wyrazenie[temp + j]) {
+            j--;
         }
-        if(j >= 0){
-            temp += max(1, j - ostatni[wyrazenie[temp+j]]);
-        } else{
+        if (j < 0) {
+            // Znaleziono wzorzec na pozycji temp
             pp = temp;
             cout << "Wzorzec wystepuje na pozycji: " << temp << endl;
             znaleziono = true;
-            temp++;
+            temp += 1; // przesuwamy o 1, żeby znaleźć kolejne wystąpienia
+        }
+        else {
+            // przesunięcie wg tablicy ostatnich wystąpień
+            int last = ostatni[(unsigned char)wyrazenie[temp + j]];
+            temp += max(1, j - last);
         }
     }
-    if(!znaleziono){
+
+    if (!znaleziono) {
         cout << "Wzorzec: " << wzorzec << " nie wystepuje w tekscie" << endl;
     }
 
