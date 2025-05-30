@@ -1,12 +1,12 @@
 2                       # liczba pól
 
 1 4 10.5                 # id pola = 1, liczba punktów = 4, ilość jęczmienia na m² = 10.5
-0 0                     # punkty graniczne pola 1
-4 0
-4 3
-0 3
+0.0 0.0                 # punkty graniczne pola 1 - wszystkie double
+4.0 0.0
+4.0 3.0
+0.0 3.0
 
 2 3 5.0                  # id pola = 2, liczba punktów = 3, ilość jęczmienia na m² = 5.0
-1 1                      # punkty graniczne pola 2
-5 1
-3 4
+1.0 1.0                 # punkty graniczne pola 2 - wszystkie double
+5.0 1.0
+3.0 4.0
