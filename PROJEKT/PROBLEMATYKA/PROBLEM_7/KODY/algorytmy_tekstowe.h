@@ -1,6 +1,5 @@
 #ifndef ALGORYTMY_H
 #define ALGORYTMY_H
-
 #include <string>
 #include <vector>
 #include <tuple>
@@ -32,6 +31,5 @@ void usun(TrieWezel* wezel);
 
 // ----- Boyer-Moore -----
 void boyerMoore(const string& tekst, const string& wzorzec, vector<pair<int,int>>& wyniki, int nrLinii);
-
 #endif
 
