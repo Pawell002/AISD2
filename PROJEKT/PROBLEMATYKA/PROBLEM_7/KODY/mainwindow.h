@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include "reprezentacja_danych.h"
 #include "graf_budowa.h"
-#include "graphwidget.h"  // DODANE
+#include "graphwidget.h"
 
 class QVBoxLayout;
 class QStackedWidget;
@@ -35,7 +35,7 @@ private:
     QTextEdit* podgladPliku;
     QTextEdit* poleKompresji;
     QTextEdit* podgladDanych;
-    GraphWidget* graphWidget;  // DODANE
+    GraphWidget* graphWidget;  
     QString pelnaZawartosc;
     QString sciezkaDoPliku;
     QVBoxLayout* u1 = nullptr;
