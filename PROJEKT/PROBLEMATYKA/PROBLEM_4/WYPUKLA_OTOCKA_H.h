@@ -1,5 +1,5 @@
-#ifndef WYPUKLA_OTOCKA_H
-#define WYPUKLA_OTOCKA_H
+#ifndef WYPUKLA_OTOCZKA_H
+#define WYPUKLA_OTOCZKA_H
 
 #include <vector>
 
