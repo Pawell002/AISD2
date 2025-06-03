@@ -2,13 +2,12 @@
 #include <algorithm>
 #include <cmath>
 
-Punkt::Punkt() : x(0), y(0) {}
-Punkt::Punkt(double _x, double _y) : x(_x), y(_y) {}
-
+// Iloczyn wektorowy OA × OB
 static double cross(const Punkt &O, const Punkt &A, const Punkt &B) {
     return (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
 }
 
+// Otoczka wypukła – zwraca punkty w kolejności przeciwnokierunkowej
 std::vector<Punkt> wypuklaOtoczka(std::vector<Punkt> &punkty) {
     int n = punkty.size();
     if (n <= 1) return punkty;
@@ -38,10 +37,11 @@ std::vector<Punkt> wypuklaOtoczka(std::vector<Punkt> &punkty) {
     return dolna;
 }
 
+// Pole wielokąta (w tym otoczki)
 double poleWielokata(const std::vector<Punkt> &wielokat) {
     double pole = 0;
     int n = wielokat.size();
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         int j = (i + 1) % n;
         pole += wielokat[i].x * wielokat[j].y - wielokat[j].x * wielokat[i].y;
     }
