@@ -1,2 +1,0 @@
-Dana funkcja [...], implementuje algorytm [...], który posłuży do [...]. Dzięki zastosowaniu danego
-algorytmu otrzymujemy optymalne rozwiązanie problemu [...]. Złożoność tego algorytmu wynosi [...].
