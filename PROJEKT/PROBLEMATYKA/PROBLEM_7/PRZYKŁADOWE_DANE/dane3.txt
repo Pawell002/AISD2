@@ -1,0 +1,48 @@
+3 6 3 48
+0 4 38
+150.0 320.0
+95.0 300.0
+180.0 350.0
+110.0 360.0
+1 2 30
+0.0 0.0
+50.0 50.0
+2 1 28
+300.0 150.0
+0 200.0 -150.0 40
+1 200.0 -50.0 45
+2 200.0 50.0 42
+3 200.0 150.0 43
+4 200.0 250.0 38
+5 200.0 350.0 37
+0 400.0 -100.0 50
+1 400.0 0.0 50
+2 400.0 100.0 48
+0 0 0 jeczmien 18 3
+1 0 1 jeczmien 20 8
+2 0 2 jeczmien 19 7
+3 0 3 jeczmien 21 6
+4 1 0 jeczmien 17 5
+5 1 1 jeczmien 22 4
+6 2 0 jeczmien 16 6
+7 2 1 jeczmien 18 5
+8 0 1 browar_do_browaru 14 5
+9 1 2 browar_do_browaru 13 4
+10 2 3 browar_do_browaru 16 6
+11 3 4 browar_do_browaru 15 5
+12 4 5 browar_do_browaru 12 4
+13 0 0 piwo 20 5
+14 0 1 piwo 19 6
+15 1 0 piwo 18 4
+16 1 1 piwo 17 3
+17 2 0 piwo 21 5
+18 2 1 piwo 22 6
+19 3 0 piwo 20 4
+20 3 1 piwo 23 5
+21 4 0 piwo 24 6
+22 5 0 piwo 25 5
+23 0 1 karczma_do_karczmy 14 5
+24 1 2 karczma_do_karczmy 15 6
+25 2 3 karczma_do_karczmy 12 4
+26 3 4 karczma_do_karczmy 13 5
+27 4 5 karczma_do_karczmy 11 6
